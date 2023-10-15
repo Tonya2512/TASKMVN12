@@ -1,3 +1,4 @@
+package ru.netology.javaqa.javamvn.manager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -44,4 +45,48 @@ class MovieManagerTest {
         Assertions.assertArrayEquals(expect, actual);
 
     }
-}
+    @Test
+
+    public void movieManagerLessThanLimit() {
+        MovieManager manager = new MovieManager();
+        manager.addMovies("Wanted");
+        manager.addMovies("Key");
+        manager.addMovies("Cube");
+        manager.addMovies("Lost");
+
+        String[] expect = {"Wanted", "Key","Cube","Lost"};
+        String[] actual = manager.findALL();
+        Assertions.assertArrayEquals(expect, actual);
+    }
+    @Test
+
+    public void movieManagerMoreThanLimit() {
+        MovieManager manager = new MovieManager();
+        manager.addMovies("Wanted");
+        manager.addMovies("Key");
+        manager.addMovies("Cube");
+        manager.addMovies("Lost");
+        manager.addMovies("Hello");
+        manager.addMovies("Begin");
+
+
+        String[] expect = {"Wanted","Key","Cube","Lost","Hello","Begin"};
+        String[] actual = manager.findALL();
+        Assertions.assertArrayEquals(expect, actual);
+    }
+    @Test
+
+    public void movieManagerEqualLimit() {
+        MovieManager manager = new MovieManager();
+        manager.addMovies("Wanted");
+        manager.addMovies("Key");
+        manager.addMovies("Cube");
+        manager.addMovies("Lost");
+        manager.addMovies("Hello");
+
+        String[] expect = {"Wanted","Key","Cube","Lost","Hello"};
+        String[] actual = manager.findALL();
+        Assertions.assertArrayEquals(expect, actual);
+    }
+    
+    }
